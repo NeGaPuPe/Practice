@@ -43,23 +43,28 @@ namespace PracticeShopProject.Windows
                 wc.DownloadFile("https://github.com/NeGaPuPe/Practice/archive/master.zip", AppDomain.CurrentDomain.BaseDirectory + @"\Updates\PracticeShopInstaller.zip");
                 var apppath = System.IO.Path.GetFullPath("Updates\\PracticeShopInstaller.zip");
                 var apppath1 = System.IO.Path.GetFullPath("Updates");
-                ZipFile.ExtractToDirectory(apppath,apppath1);
-                var process = Process.Start(new ProcessStartInfo
-                {
-                    FileName = AppDomain.CurrentDomain.BaseDirectory + $@"\Updates\Practice-master\PracticeShopInstaller\Debug\PracticeShopInstaller.msi",
-                    Arguments = $@"TARGETDIR=""{AppDomain.CurrentDomain.BaseDirectory}"" /qb",
-                    WindowStyle = ProcessWindowStyle.Hidden,
-                });
+                ZipFile.ExtractToDirectory(apppath, apppath1);
+                var process = Cmd("msiexec.exe /x" + AppDomain.CurrentDomain.BaseDirectory + $@"\Updates\Practice-master\PracticeShopInstaller\Debug\PracticeShopInstaller.msi " + $@"TARGETDIR=""{AppDomain.CurrentDomain.BaseDirectory}"" /qn");
+
                 process.EnableRaisingEvents = true;
-                process.Exited += Process_Exited;
+                process.Exited += (e1, s) => {
+                    var process1 = Process.Start(new ProcessStartInfo
+                    {
+                        FileName = AppDomain.CurrentDomain.BaseDirectory + $@"\Updates\Practice-master\PracticeShopInstaller\Debug\PracticeShopInstaller.msi",
+                        Arguments = $@"TARGETDIR=""{AppDomain.CurrentDomain.BaseDirectory}"" /qb",
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                    });
+                    process1.EnableRaisingEvents = true;
+                    process1.Exited += Process_Exited;
+                };
             }
         }
 
         private void Process_Exited(object sender, EventArgs e)
         {
-            if(Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "PracticeShop"))
+            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "PracticeShop"))
             {
-                if(!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "PracticeShop\\PracticeShopProject.exe"))
+                if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "PracticeShop\\PracticeShopProject.exe"))
                 {
                     MessageBox.Show("Утановка приложения остановлена.", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Warning);
                     Dispatcher.Invoke(() =>
@@ -75,9 +80,9 @@ namespace PracticeShopProject.Windows
             }
         }
 
-        public void Cmd(string line)
+        public Process Cmd(string line)
         {
-            Process.Start(new ProcessStartInfo
+            return Process.Start(new ProcessStartInfo
             {
                 FileName = "cmd",
                 Arguments = $"/c {line}",
