@@ -20,7 +20,6 @@
                     <TextBlock Text="По возрастанию" FontSize="15" FontWeight="ExtraLight"/>
                 </RadioButton>
             </StackPanel>
-            <TextBlock Text="Уга Буга" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
         </StackPanel>
         <DockPanel Margin="20 60 20 20" Height="auto">
             <ListView x:Name="ListViewProducts" Background="Red">
