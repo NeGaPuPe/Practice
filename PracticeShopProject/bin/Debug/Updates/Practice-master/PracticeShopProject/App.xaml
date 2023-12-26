@@ -4,6 +4,20 @@
              xmlns:local="clr-namespace:PracticeShopProject"
              StartupUri="Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+            <Setter Property="Foreground" Value="PeachPuff"></Setter>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+        </Style>
+        <Style TargetType="TextBox" x:Key="TextBoxStyle">
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Background" Value="CornflowerBlue"></Setter>
+            <Setter Property="Foreground" Value="PeachPuff"></Setter>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="BorderBrush" Value="PeachPuff"></Setter>
+        </Style>
+        <Style TargetType="RadioButton" x:Key="RadioButtonStyle">
+            <Setter Property="Foreground" Value="PeachPuff"></Setter>
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

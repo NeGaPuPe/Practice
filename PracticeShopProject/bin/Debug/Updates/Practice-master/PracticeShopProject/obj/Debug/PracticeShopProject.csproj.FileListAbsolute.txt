@@ -24,3 +24,4 @@ C:\Users\rich4\source\repos\PracticeShopProject\PracticeShopProject\obj\Debug\Pr
 C:\Users\rich4\source\repos\PracticeShopProject\PracticeShopProject\obj\Debug\PracticeShopProject.pdb
 C:\Users\rich4\source\repos\PracticeShopProject\PracticeShopProject\obj\Debug\Windows\InstallWindow.g.cs
 C:\Users\rich4\source\repos\PracticeShopProject\PracticeShopProject\obj\Debug\Windows\InstallWindow.baml
+C:\Users\rich4\source\repos\PracticeShopProject\PracticeShopProject\obj\Debug\App.baml

@@ -25,10 +25,12 @@ namespace PracticeShopProject
             MainFrame.Navigate(new ProductsPage());
         }
 
+        string CurrentVersionApp = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             string VersionApp = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            VersionAppTextBlock.Text = "Version: " + VersionApp;
+            VersionAppTextBlock.Text = "Version: " + CurrentVersionApp;
         }
     }
 }

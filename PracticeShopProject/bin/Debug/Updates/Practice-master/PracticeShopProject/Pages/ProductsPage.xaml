@@ -9,9 +9,20 @@
       Title="ProductsPage" Loaded="Page_Loaded">
 
     <Grid>
-        <TextBox Text="Пупа"/>
-        <DockPanel Margin="20 40 20 20" Height="auto">
-            <ListView x:Name="ListViewProducts">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="top" Margin="0 10">
+            <TextBlock Text="Поиск" Style="{StaticResource TextBlockStyle}" Margin="20 0 10 0" FontSize="15" VerticalAlignment="Center" FontWeight="Medium"/>
+            <TextBox Width="180" Style="{StaticResource TextBoxStyle}" VerticalContentAlignment="Center" Name="SearchTextBox"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0">
+                <RadioButton Style="{StaticResource RadioButtonStyle}" Name="DescendingSortButton" >
+                    <TextBlock Text="По убыванию" FontSize="15" FontWeight="ExtraLight"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonStyle}"  Name="AscendingSortButton" >
+                    <TextBlock Text="По возрастанию" FontSize="15" FontWeight="ExtraLight"/>
+                </RadioButton>
+            </StackPanel>
+        </StackPanel>
+        <DockPanel Margin="20 60 20 20" Height="auto">
+            <ListView x:Name="ListViewProducts" Background="Red">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="Background" Value="Transparent" />
@@ -33,14 +44,9 @@
                     <DataTemplate>
                         <Border Margin="10" Width="135" Cursor="Hand" Height="auto" Name="ProductBorder">
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Border Width="100" Height="110" CornerRadius="5" Margin="5">
-                                    <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="1"/>
-                                    </Border.Effect>
-                                    <Image x:Name="PhotoProduct" Source="{Binding PhotoProduct}"/>
-                                </Border>
-                                <TextBlock  Text="{Binding Price, StringFormat= 'c', ConverterCulture= 'ru_Ru'}" Width="135" TextWrapping="Wrap" TextAlignment="Center" FontSize="17" FontFamily="Franklin Gothic Medium"/>
-                                <TextBlock  Text="{Binding Name}" FontSize="15" Width="135" TextAlignment="Center" TextWrapping="Wrap"/>
+                                <Rectangle Height="175" Fill="Beige" Margin="0 0 0 10"/>
+                                <TextBlock  Text="{Binding Price, StringFormat= 'c', ConverterCulture= 'ru_Ru'}" Style="{StaticResource TextBlockStyle}" Width="135" TextWrapping="Wrap" TextAlignment="Center" FontSize="17" FontFamily="Franklin Gothic Medium"/>
+                                <TextBlock  Text="{Binding Name}" FontSize="15" Width="135" TextAlignment="Center" Style="{StaticResource TextBlockStyle}" TextWrapping="Wrap"/>
                             </StackPanel>
                         </Border>
                     </DataTemplate>

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticeShopProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="1250" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="PracticeShop" Height="650" Width="1250" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Background="Blue">
     <Grid>
         <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
-        <TextBlock Name="VersionAppTextBlock" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19 0 0 0"/>
+        <TextBlock Style="{StaticResource TextBlockStyle}" Name="VersionAppTextBlock" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="19 0 0 0"/>
     </Grid>
 </Window>

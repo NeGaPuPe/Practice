@@ -15,12 +15,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PracticeShopProject.Entities;
 using System.Reflection;
-using PracticeShopProject.Classes;
 using System.Net;
 using System.Diagnostics;
 using System.IO.Compression;
 using System.IO;
 using PracticeShopProject.Windows;
+using System.Net.Http;
 
 namespace PracticeShopProject.Pages
 {
@@ -32,19 +32,23 @@ namespace PracticeShopProject.Pages
             InitializeComponent();
             productList = DB.entities.Product.ToList();
             ListViewProducts.ItemsSource = productList;
+            SearchTextBox.TextChanged += Sorting;
+            AscendingSortButton.Checked += Sorting;
+            DescendingSortButton.Checked += Sorting;
         }
         List<Product> productList = new List<Product>();
 
         string CurrentVersionApp = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            string VersionApp = client.DownloadString("https://raw.githubusercontent.com/NeGaPuPe/Practice/master/PracticeShopProject/Resources/Version/VersionApp.txt").Replace("\n", "");
-            if (CurrentVersionApp.Contains(VersionApp))
+            var a = new HttpClient();
+            a.DefaultRequestHeaders.CacheControl = new System.Net.Http.Headers.CacheControlHeaderValue
             {
-                MessageBox.Show("Версия актуальна."); 
-            }
-            else
+                NoCache = true,
+            };
+            string VersionApp = (await(await a.GetAsync("https://raw.githubusercontent.com/NeGaPuPe/Practice/master/PracticeShopProject/Resources/Version/VersionApp.txt?time="+DateTime.Now)).Content.ReadAsStringAsync()).Replace("\n", "");
+            if (!CurrentVersionApp.Contains(VersionApp))
             {
                 MessageBoxResult result = MessageBox.Show("Версия вашего приложения устарела, хотите обновить его?", "Сообщение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
@@ -53,6 +57,27 @@ namespace PracticeShopProject.Pages
                     installWindow.Show();
                 }
             }
+        }
+
+        public void Sorting(object sender, EventArgs e)
+        {
+            var product = DB.entities.Product.ToList();
+
+            if (SearchTextBox.Text != "")
+            {
+                product = product.Where(x => x.Name.ToString().ToLower().Contains(SearchTextBox.Text.ToLower()) || x.Price.ToString().ToLower().Contains(SearchTextBox.Text.ToLower())).ToList();
+            }
+
+            if (AscendingSortButton.IsChecked == true)
+            {
+                product = product.OrderBy(x => x.Price).ToList();
+            }
+
+            if (DescendingSortButton.IsChecked == true)
+            {
+                product = product.OrderByDescending(x => x.Price).ToList();
+            }
+            ListViewProducts.ItemsSource = product;
         }
     }
 }
