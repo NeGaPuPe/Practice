@@ -19,6 +19,7 @@ using System.Net;
 using System.Diagnostics;
 using System.IO.Compression;
 using System.IO;
+using PracticeShopProject.Windows;
 using System.Net.Http;
 
 namespace PracticeShopProject.Pages
@@ -37,6 +38,7 @@ namespace PracticeShopProject.Pages
         }
         List<Product> productList = new List<Product>();
 
+        string CurrentVersionApp = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public void Sorting(object sender, EventArgs e)
         {
             var product = DB.entities.Product.ToList();
