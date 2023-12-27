@@ -193,7 +193,9 @@
       <DependentUpon>ShopModel.edmx</DependentUpon>
       <LastGenOutput>ShopModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\Version\VersionApp.txt" />
+    <None Include="Resources\Version\VersionApp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Resource Include="Resources\Icons\ShopIcon.ico" />
   </ItemGroup>
   <ItemGroup>
