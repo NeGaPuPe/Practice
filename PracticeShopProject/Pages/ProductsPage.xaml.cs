@@ -25,7 +25,6 @@ namespace PracticeShopProject.Pages
 {
     public partial class ProductsPage : Page
     {
-        WebClient client = new WebClient();
         public ProductsPage()
         {
             InitializeComponent();
@@ -37,6 +36,7 @@ namespace PracticeShopProject.Pages
         }
         List<Product> productList = new List<Product>();
 
+        string CurrentVersionApp = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public void Sorting(object sender, EventArgs e)
         {
             var product = DB.entities.Product.ToList();
