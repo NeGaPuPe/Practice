@@ -22,7 +22,7 @@
             </StackPanel>
         </StackPanel>
         <DockPanel Margin="20 60 20 20" Height="auto">
-            <ListView x:Name="ListViewProducts" Background="Red">
+            <ListView x:Name="ListViewProducts" Background="SandyBrown">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="Background" Value="Transparent" />
