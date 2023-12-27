@@ -19,7 +19,6 @@ using System.Net;
 using System.Diagnostics;
 using System.IO.Compression;
 using System.IO;
-using PracticeShopProject.Windows;
 using System.Net.Http;
 
 namespace PracticeShopProject.Pages
@@ -37,27 +36,6 @@ namespace PracticeShopProject.Pages
             DescendingSortButton.Checked += Sorting;
         }
         List<Product> productList = new List<Product>();
-
-        string CurrentVersionApp = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            var a = new HttpClient();
-            a.DefaultRequestHeaders.CacheControl = new System.Net.Http.Headers.CacheControlHeaderValue
-            {
-                NoCache = true,
-            };
-            string VersionApp = (await(await a.GetAsync("https://raw.githubusercontent.com/NeGaPuPe/Practice/master/PracticeShopProject/Resources/Version/VersionApp.txt?time="+DateTime.Now)).Content.ReadAsStringAsync()).Replace("\n", "");
-            if (!CurrentVersionApp.Contains(VersionApp))
-            {
-                MessageBoxResult result = MessageBox.Show("Версия вашего приложения устарела, хотите обновить его?", "Сообщение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.Yes)
-                {
-                    InstallWindow installWindow = new InstallWindow();
-                    installWindow.Show();
-                }
-            }
-        }
 
         public void Sorting(object sender, EventArgs e)
         {

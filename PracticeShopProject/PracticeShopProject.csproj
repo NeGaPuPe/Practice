@@ -88,10 +88,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\InstallWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,9 +123,6 @@
     </Compile>
     <Compile Include="Pages\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\InstallWindow.xaml.cs">
-      <DependentUpon>InstallWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -193,9 +186,7 @@
       <DependentUpon>ShopModel.edmx</DependentUpon>
       <LastGenOutput>ShopModel.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\Version\VersionApp.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Resource Include="Resources\Version\VersionApp.txt" />
     <Resource Include="Resources\Icons\ShopIcon.ico" />
   </ItemGroup>
   <ItemGroup>
