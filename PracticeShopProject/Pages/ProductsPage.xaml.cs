@@ -25,6 +25,7 @@ namespace PracticeShopProject.Pages
 {
     public partial class ProductsPage : Page
     {
+        WebClient client = new WebClient();
         public ProductsPage()
         {
             InitializeComponent();
