@@ -1,0 +1,57 @@
+﻿<Page x:Class="PracticeShopProject.Pages.ProductsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PracticeShopProject.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1250"
+      Title="ProductsPage">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="top" Margin="0 10">
+            <TextBlock Text="Поиск" Style="{StaticResource TextBlockStyle}" Margin="20 0 10 0" FontSize="15" VerticalAlignment="Center" FontWeight="Medium"/>
+            <TextBox Width="180" Style="{StaticResource TextBoxStyle}" VerticalContentAlignment="Center" Name="SearchTextBox"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15 0">
+                <RadioButton Style="{StaticResource RadioButtonStyle}" Name="DescendingSortButton" >
+                    <TextBlock Text="По убыванию" FontSize="15" FontWeight="ExtraLight"/>
+                </RadioButton>
+                <RadioButton Style="{StaticResource RadioButtonStyle}"  Name="AscendingSortButton" >
+                    <TextBlock Text="По возрастанию" FontSize="15" FontWeight="ExtraLight"/>
+                </RadioButton>
+            </StackPanel>
+        </StackPanel>
+        <DockPanel Margin="20 60 20 20" Height="auto">
+            <ListView x:Name="ListViewProducts" Background="Red">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" VerticalAlignment="Top" Width="1190"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="10" Width="135" Cursor="Hand" Height="auto" Name="ProductBorder">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Rectangle Height="175" Fill="Beige" Margin="0 0 0 10"/>
+                                <TextBlock  Text="{Binding Price, StringFormat= 'c', ConverterCulture= 'ru_Ru'}" Style="{StaticResource TextBlockStyle}" Width="135" TextWrapping="Wrap" TextAlignment="Center" FontSize="17" FontFamily="Franklin Gothic Medium"/>
+                                <TextBlock  Text="{Binding Name}" FontSize="15" Width="135" TextAlignment="Center" Style="{StaticResource TextBlockStyle}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Page>
