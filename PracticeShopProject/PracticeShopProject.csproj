@@ -98,25 +98,25 @@
     </Compile>
     <Compile Include="Entities\DB.cs" />
     <Compile Include="Model\Category.cs">
-      <DependentUpon>SchoolShopModel.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Product.cs">
-      <DependentUpon>SchoolShopModel.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SchoolShopModel.Context.cs">
+    <Compile Include="Model\ShopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolShopModel.Context.tt</DependentUpon>
+      <DependentUpon>ShopModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SchoolShopModel.cs">
+    <Compile Include="Model\ShopModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolShopModel.tt</DependentUpon>
+      <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\SchoolShopModel.Designer.cs">
+    <Compile Include="Model\ShopModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SchoolShopModel.edmx</DependentUpon>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
@@ -144,12 +144,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\SchoolShopModel.edmx">
+    <EntityDeploy Include="Model\ShopModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SchoolShopModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ShopModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\SchoolShopModel.edmx.diagram">
-      <DependentUpon>SchoolShopModel.edmx</DependentUpon>
+    <None Include="Model\ShopModel.edmx.diagram">
+      <DependentUpon>ShopModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -183,15 +183,15 @@
     <Folder Include="Classes\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\SchoolShopModel.Context.tt">
+    <Content Include="Model\ShopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SchoolShopModel.edmx</DependentUpon>
-      <LastGenOutput>SchoolShopModel.Context.cs</LastGenOutput>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+      <LastGenOutput>ShopModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\SchoolShopModel.tt">
+    <Content Include="Model\ShopModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SchoolShopModel.edmx</DependentUpon>
-      <LastGenOutput>SchoolShopModel.cs</LastGenOutput>
+      <DependentUpon>ShopModel.edmx</DependentUpon>
+      <LastGenOutput>ShopModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
